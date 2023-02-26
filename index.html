@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.8/d3.min.js" type="text/JavaScript"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="viz">
+        <svg style="width: 1050px; height: 650px;"></svg>
+    </div>
+    <script>
+        d3.json("./rrtest.json", viz)
+
+        function viz(data) {
+            
+            var depthScale = d3.scaleOrdinal()
+                .range(["#66c2a5","#fc8d62","#8da0cb","#e78ac3","#a6d854"])
+                // .range(["#f0f9e8","#bae4bc","#7bccc4","#43a2ca","#0868ac"])
+                // .range(["#5EAFC6", "#FE9922", "#93C464", "#75739F"])
+
+            var root = d3.hierarchy(data)
+            console.log(root)
+
+            var treeChart = d3.tree()
+            treeChart.size([950, 500])
+
+            var treeData = treeChart(root).descendants()
+
+            d3.select("svg")
+                .append("g")
+                .attr("id", "treeG")
+                .attr("transform", "translate(30,60)")
+                .selectAll("g")
+                .data(treeData)
+                .enter()
+                .append("g")
+                .attr("class", "node")
+                .classed("domain", d => d.data.domain )
+                .classed("region", d => d.data.region )
+                .classed("country", d => d.data.country )
+                .classed("site", d => d.data.site )
+                .classed("users", d => d.data.users )
+                .classed("computers", d => d.data.computers )
+                .attr("transform", d => `translate(${d.x},${d.y})`)
+
+            d3.selectAll("g.node")
+                // .filter(d => d.data.domain || d.data.region || d.data.country || d.data.site || d.data.computers || d.data.users )
+                .append("circle")
+                .attr("r",  d => (d.children === undefined) ? 30 : 40)
+                .style("fill", d => depthScale(d.depth))
+                .style("stroke", "black")
+                .style("stroke-width", "2px")
+
+            d3.selectAll("g.node")
+                .append("text")
+                .attr("y", 0)
+                .style("text-anchor", "middle")
+                .style("fill", "#4f442b")
+                .text(d => d.data.domain || d.data.region || d.data.site || d.data.computers || d.data.users);
+
+            d3.selectAll("g.node")
+                .filter(d => d.data.country)
+                .insert("image")
+                .classed("svg-image", true)
+                .attr("xlink:href", d => d.data.flag)
+                .attr("width", "60px").attr("heigth", "34px")
+                .attr("x", -30).attr("y", -17)
+
+            d3.selectAll(".domain")
+                .insert("text")
+                .text("domain")
+                .attr("y", 15)
+                .style("text-anchor", "middle")
+                .style("fill", "#4f442b")
+
+            d3.selectAll(".region")
+                .insert("text")
+                .text("region")
+                .attr("y", 15)
+                .style("text-anchor", "middle")
+                .style("fill", "#4f442b")
+
+            d3.selectAll(".site")
+                .insert("text")
+                .text("site")
+                .attr("y", 15)
+                .style("text-anchor", "middle")
+                .style("fill", "#4f442b")
+
+            d3.selectAll(".users")
+                .append("text")
+                .text("users")
+                .attr("y", 15)
+                .style("text-anchor", "middle")
+                .style("fill", "#4f442b")
+
+            d3.selectAll(".computers")
+                .append("text")
+                .text("hosts")
+                .attr("y", 15)
+                .style("text-anchor", "middle")
+                .style("fill", "#4f442b")
+
+            d3.select("#treeG").selectAll("line")
+                .data(treeData.filter(d => d.parent))
+                .enter().insert("line", "g")
+                .attr("x1", d => d.parent.x)
+                .attr("y1", d => d.parent.y)
+                .attr("x2", d => d.x)
+                .attr("y2", d => d.y)
+                .style("stroke", 'black')
+                .style("stroke-width", "2px")
+        }
+    </script>
+</body>
+
+</html>

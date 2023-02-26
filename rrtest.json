@@ -1,0 +1,93 @@
+{
+    "domain": "RRTEST",
+    "children": [
+        {
+            "region": "AMER",
+            "children": [
+                {
+                    "country": "Canada",
+                    "flag": "./images/svg/ca.svg",
+                    "children": [
+                        {
+                            "site": "Montreal",
+                            "children": [
+                                {
+                                    "computers": 10
+                                },
+                                {
+                                    "users": 4
+                                }
+                            ]
+                        },
+                        {
+                            "site": "Glacier",
+                            "children": [
+                                {
+                                    "computers": 0
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "country": "US",
+                    "flag": "./images/svg/us.svg",
+                    "children": [
+                        {
+                            "site": "Stennis",
+                            "children": [
+                                {
+                                    "computers": 4
+                                },
+                                {
+                                    "users": 1
+                                }
+                            ]
+                            
+                            
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "region": "EMEA",
+            "children": [
+                {
+                    "country": "Germany",
+                    "flag": "./images/svg/de.svg",
+                    "children": [
+                        {
+                            "site": "Dahlewitz",
+                            "children": [
+                                {
+                                    "computers": 0
+                                },
+                                {
+                                    "users": 61
+                                }
+                            ]                
+                        }
+                    ] 
+                },
+                {
+                    "country": "UK",
+                    "flag": "./images/svg/gb.svg",
+                    "children": [
+                        {
+                            "site": "Derby",
+                            "children": [
+                                {
+                                    "computers": 153
+                                },
+                                {
+                                    "users": 237
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
