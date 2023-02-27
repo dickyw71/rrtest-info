@@ -45,7 +45,7 @@
                             ]   
                         },
                         {
-                            "site: "FTB",
+                            "site": "FTB",
                             "children": [
                                 {
                                     "computers": 11
