@@ -19,7 +19,7 @@
             In a Windows domain there are one or more computers with the role of domain controller, each domain controller stores the domain database.</p>
         <p>Domain computers can run Windows or non-Windows operating systems, e.g. Linux, 
             the Samba open-source software package is used on non-Windows OSs to add domain computers as either members or controllers.</p>
-        <h3>The RRTEST Windows domain contains computers and users at Rolls-Royce test sites worldwide.</p>
+        <h3>The RRTEST Windows domain contains computers and users at test sites worldwide.</p>
     </div>
     <div id="viz">
         <svg style="width: 1050px; height: 650px;"></svg>
@@ -77,7 +77,7 @@
                 .insert("image")
                 .classed("svg-image", true)
                 .attr("xlink:href", d => `../resources/${d.data.code}.svg`)
-                .attr("width", "60px").attr("heigth", "34px")
+                .attr("width", "60px").attr("height", "34px")
                 .attr("x", -30).attr("y", -17)
 
             d3.selectAll(".domain")
@@ -91,6 +91,13 @@
                 .insert("text")
                 .text("region")
                 .attr("y", 15)
+                .style("text-anchor", "middle")
+                .style("fill", "#4f442b")
+
+                d3.selectAll(".country")
+                .insert("text")
+                .text(d => d.data.country)
+                .attr("y", 28)
                 .style("text-anchor", "middle")
                 .style("fill", "#4f442b")
 
