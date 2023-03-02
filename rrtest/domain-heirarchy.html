@@ -10,14 +10,19 @@
 
 <body>
     <div id="content">
-        <h1>RRTEST</h1>
-        <h2>The global network for test</h2>
-        <h3>About Windows domains</h3>
-        <p>A Windows domain is a logical grouping of computers that can be co-located or in different parts of the world. 
-            The domain has a database into which the user accounts, computers, security groups and policies are registered.</p>
-        <p>Active Directory is a Windows component for management of the domain database. 
-            In a Windows domain there are one or more computers with the role of domain controller, each domain controller stores the domain database.</p>
-        <p>Domain computers can run Windows or non-Windows operating systems; on Linux/UNIX OSs, the <a href="https://www.samba.org">Samba</a> open-source software package is used to add computers as either domain members or domain controllers.</p>
+        <h1><small>The</small> RRTEST <small>global test network</small></h1>
+        <ul>
+            <li><h3>Enables centralized, simplified and consistent management of computers, users and resources at all test sites.</h3></li>
+            <li><h3>Federates with the corporate IT (GAD) network for seamless access to test hosted web applications by GAD users.</h3></li>
+            <li><h3>Uses standardized architectural design patterns and components for simple and secure interfaces between the test and corporate networks.</h3></li>
+        </ul>
+       <h3>About Windows domains</h3>
+       <p>A Windows domain is a logical grouping of computers that can be co-located or in different parts of the world. 
+            The domain has a database into which user accounts, computers accounts, security groups and group policies are registered.
+            Active Directory is a Windows component for management of the domain database.
+            In a Windows domain there are one or more computers with the role of domain controller, each domain controller stores the domain database.
+            Domain computers can run Windows or non-Windows operating systems; on Linux/UNIX OSs, the <a href="https://www.samba.org">Samba</a> open-source software package is used to add computers as either domain members or domain controllers.
+       </p>
         <h3>The RRTEST Windows domain contains computers and users at test sites worldwide.</p>
     </div>
     <div id="viz">
@@ -32,7 +37,6 @@
                 .range(["#66c2a5", "#fc8d62", "#8da0cb", "#e78ac3", "#a6d854"])
 
             var root = d3.hierarchy(data)
-            console.log(root)
 
             var treeChart = d3.tree()
             treeChart.size([950, 500])
